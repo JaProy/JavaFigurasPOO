@@ -23,13 +23,13 @@ public class FCirculo extends Figura implements IArea,IPerimetro {
     //Metodo de la interfaz IArea
     @Override
     public void mostrarArea() {
-        System.out.println("El area de su circulo es " + getArea() + "u");
+        System.out.println("El area de su círculo es " + getArea() + "u");
     }
 
     //Metodo de la interfaz IPerimetro
     @Override
     public void mostrarPerimetro() {
-        System.out.println("El perimetro de su circulo es " + getPerimetro() + "u");
+        System.out.println("El perimetro de su círculo es " + getPerimetro() + "u");
     }
     
 }

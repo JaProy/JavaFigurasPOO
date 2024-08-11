@@ -32,13 +32,13 @@ public class FTriangulo extends Figura implements IArea,IPerimetro{
     //Metodo de la interfaz IArea
     @Override
     public void mostrarArea() {
-        System.out.println("El area de tu triangulo es " + getArea() + "u");
+        System.out.println("El area de tu triángulo es " + getArea() + "u");
     }
 
     //Metodo de la interfaz IPerimetro
     @Override
     public void mostrarPerimetro() {
-        System.out.println("El perimetro de tu triangulo es " + getPerimetro() + "u");
+        System.out.println("El perimetro de tu triángulo es " + getPerimetro() + "u");
     }
     
 }

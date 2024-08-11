@@ -17,11 +17,15 @@ public class Menu {
     //Declaramos metodo principal
     public void menuOpciones() throws IOException, InterruptedException{
         //Le decimos al usuario las opciones disponibles
-        System.out.println("Seleccione una figura para calcular Area y Perimetro:");
+        System.out.println("Seleccione una figura para calcular Área y Perímetro:");
         System.out.println("1 --- Cuadrado");
-        System.out.println("2 --- Triangulo");
-        System.out.println("3 --- Trapecio");
-        System.out.println("4 --- Circulo");
+        System.out.println("2 --- Rectángulo");
+        System.out.println("3 --- Triángulo");
+        System.out.println("4 --- Trapecio");
+        System.out.println("5 --- Círculo");
+        System.out.println("6 --- Pentágono");
+        System.out.println("7 --- Hexágono");
+        System.out.println("8 --- Octágono");
         
         //Realizamos switch y a su vez leemos la entrada del usuario
         switch (eTInt.nextInt()) {
@@ -49,22 +53,59 @@ public class Menu {
                         cuad1.mostrarPerimetro();
                     }
                     default -> //Como seguridad si introduze un dijito no valido le mostramos esto al usuario
-                        System.out.println("Introduzca un dijito VALIDO!");
+                        System.out.println("Introduzca un dijito VÁLIDO!");
                 }
             }
-            //Clase FTRIANGULO
+            //Clase FRectángulo
             case 2 -> {
                 //Salto de linea
                 System.out.println("\n");
                 
                 //Le damos instrucciones al usuario
-                System.out.println("Por favor introduzca la medida de la altura de su triangulo:");
+                System.out.println("Por favor ingrese el alto de su rectángulo");
+                double altoR = eTDouble.nextDouble();
+                System.out.println("Por favor ingrese el ancho de su rectángulo");
+                double anchoR = eTDouble.nextDouble();
+                
+                //Creamos la clase con los valores dados por el usuario
+                FRectangulo rec1 = new FRectangulo(altoR,anchoR);
+                
+                //Mandamos a realizar calculos de la clase creada
+                rec1.realizarCalculos();
+                
+                //Con el valor dado por el usuario seleccionamos una opcion
+                switch (menuMO()) {
+                    case 1 -> {
+                        //Ejecutamos el AREA del rectangulo
+                        rec1.mostrarArea();
+                    }
+                    case 2 -> {
+                        //Ejecutamos el PERIMETRO del rectangulo
+                        rec1.mostrarPerimetro();
+                    }
+                    case 3 -> {
+                        //Ejecutamos el AREA y el PERIMETRO del rectangulo
+                        rec1.mostrarArea();
+                        rec1.mostrarPerimetro();
+                    }
+                    default -> {//Como seguridad si introduze un dijito no valido le mostramos esto al usuario
+                        System.out.println("Introduzca un dijito VÁLIDO");
+                    }
+                }
+            }
+            //Clase FTRIÁNGULO
+            case 3 -> {
+                //Salto de linea
+                System.out.println("\n");
+                
+                //Le damos instrucciones al usuario
+                System.out.println("Por favor introduzca la medida de la altura de su triángulo:");
                 double alturaT = eTDouble.nextDouble();
                 System.out.println("Ahora introduzca la medida de la base:");
                 double baseT = eTDouble.nextDouble();
-                System.out.println("Ahora introduzca la medida del lado izquiero de si triangulo:");
+                System.out.println("Ahora introduzca la medida del lado izquiero de si triángulo:");
                 double lado1T = eTDouble.nextDouble();
-                System.out.println("Ahora introduzca la medida del lado derecho de su triangulo:");
+                System.out.println("Ahora introduzca la medida del lado derecho de su triángulo:");
                 double lado2T = eTDouble.nextDouble();
                 
                 //Creamos la clase con los dijitos ingresados
@@ -85,11 +126,11 @@ public class Menu {
                         tri1.mostrarPerimetro();
                     }
                     default -> //Como seguridad si introduze un dijito no valido le mostramos esto al usuario
-                        System.out.println("Introduzca un dijito VALIDO!");
+                        System.out.println("Introduzca un dijito VÁLIDO!");
                 }
             }
             //Clase FTrapecio
-            case 3 -> {
+            case 4 -> {
                 //Salto de linea
                 System.out.println("\n");
                 
@@ -127,17 +168,17 @@ public class Menu {
                         tra1.mostrarPerimetro();
                     }
                     default -> {//Como seguridad si introduze un dijito no valido le mostramos esto al usuario
-                        System.out.println("Introduzca un dijito VALIDO");
+                        System.out.println("Introduzca un dijito VÁLIDO");
                     }
                 }
             }
-            //Clase FCirculo
-            case 4 -> {
+            //Clase FCírculo
+            case 5 -> {
                 //Salto de linea
                 System.out.println("\n");
                 
                 //Le damos instrucciones al usuario
-                System.out.println("Por favor introduzca el radio del circulo");
+                System.out.println("Por favor introduzca el radio del círculo");
                 
                 //Creamos la clase y directamente leemos el valor del radio
                 FCirculo cir1 = new FCirculo(eTDouble.nextDouble());
@@ -161,7 +202,118 @@ public class Menu {
                         cir1.mostrarPerimetro();
                     }
                     default -> {//Como seguridad si introduze un dijito no valido le mostramos esto al usuario
-                        System.out.println("Introduzca un dijito VALIDO");
+                        System.out.println("Introduzca un dijito VÁLIDO");
+                    }
+                }
+            }
+            //Clase FPentágono
+            case 6 -> {
+                //Salto de linea
+                System.out.println("\n");
+                
+                //Le damos instrucciones al usuario
+                System.out.println("Por favor ingrese la medida de uno de los lados del pentágono");
+                double ladoP = eTDouble.nextDouble();
+                System.out.println("Por favor ingrese la medida de la apotema de su pentágono");
+                double apotemaP = eTDouble.nextDouble();
+                
+                //Creamos la clase con los valores dados
+                FPentagono pen1 = new FPentagono(ladoP,apotemaP);
+                
+                //Realizamos los calculos
+                pen1.realizarCalculos();
+                
+                //Con el valor dijitado por el usuario seleccionamos una tarea a realizar
+                switch (menuMO()) {
+                    case 1 -> {
+                        //Ejecutamos el AREA del pentagono
+                        pen1.mostrarArea();
+                    }
+                    case 2 -> {
+                        //Ejecutamos el PERIMETRO del pentagono
+                        pen1.mostrarPerimetro();
+                    }
+                    case 3 -> {
+                        //Ejecutamos el AREA y el PERIMETRO pentagono
+                        pen1.mostrarArea();
+                        pen1.mostrarPerimetro();
+                    }
+                    default -> { //Como seguridad si introduze un dijito no valido le mostramos esto al usuario
+                        System.out.println("Introduzca un dijito VÁLIDO");
+                    }
+                }
+            }
+            //Clase FHexágono
+            case 7 -> {
+                //Salto de linea
+                System.out.println("\n");
+                
+                //Le damos instrucciones al usuario
+                System.out.println("Por favor ingrese la medida de uno de los lados de su hexágono");
+                double ladoH = eTDouble.nextDouble();
+                System.out.println("Por favor ingrese la medida de la apotema de su hexágono");
+                double apotemaH = eTDouble.nextDouble();
+                
+                //Creamos la clase con los valores dados
+                FHexagono hexa1 = new FHexagono(ladoH,apotemaH);
+                
+                //Realizamos los calculos
+                hexa1.realizarCalculos();
+                
+                //Con el valor dado por el usuario ejecutamos una tarea
+                switch (menuMO()) {
+                    case 1 -> {
+                        //Elecutamos el AREA del hexagono
+                        hexa1.mostrarArea();
+                    }
+                    case 2 -> {
+                        //Ejecutamos el PERIMETRO del hexagono
+                        hexa1.mostrarPerimetro();
+                    }
+                    case 3 ->{
+                        //Ejecutamos el AREA y el PERIMETRO del hexagono
+                        hexa1.mostrarArea();
+                        hexa1.mostrarPerimetro();
+                    }
+                    default -> {//Como seguridad si introduze un dijito no valido le mostramos esto al usuario
+                        System.out.println("Introduzca un dijito VÁLIDO");
+                    }
+                }
+            }
+            //Clase FOctágono
+            case 8 -> {
+                //Salto de linea
+                System.out.println("\n");
+                
+                //Le damos instrucciones al usuario
+                System.out.println("Por favor introduzca la medida de uno de sus lados de su octágono");
+                double ladoO = eTDouble.nextDouble();
+                System.out.println("Por favor introduzca la medida de la apotema de su octágono");
+                double apotemaO = eTDouble.nextDouble();
+                
+                //Creamos la clase con los valores dados
+                FOctagono octa1 = new FOctagono(ladoO,apotemaO);
+                
+                //Realizamos los calculos
+                octa1.realizarCalculos();
+                
+                //Con el valor dado por el usuario ejecutamos una tarea
+                switch (menuMO()) {
+                    case 1 -> {
+                        //Ejecutamos el AREA del octagono
+                        octa1.mostrarArea();
+                    }
+                    case 2 -> {
+                        //Ejecutamos el PERIMETRO del octagono
+                        octa1.mostrarPerimetro();
+                    }
+                    case 3 -> {
+                        //Ejecutamos el AREA y el PERIMETRO del octagono
+                        octa1.mostrarArea();
+                        octa1.mostrarPerimetro();
+                    }
+                    default -> {//Como seguridad si introduze un dijito no valido le mostramos esto al usuario
+                        System.out.println("Introduzca un dijito VÁLIDO");
                     }
                 }
             }
@@ -169,7 +321,7 @@ public class Menu {
             default -> {
                 //Salto de linea
                 System.out.println("\n");
-                System.out.println("Introduzca un numero VALIDO!!!");
+                System.out.println("Introduzca un numero VÁLIDO!!!");
             }
         }
         
@@ -183,8 +335,8 @@ public class Menu {
         //salto de linea
         System.out.println("\n");
         //Preguntamos al usuario que desea realizar
-        System.out.println("Seleccione una opcion a realizar:");
-        System.out.println("1 -- Area");
+        System.out.println("Seleccione una opción a realizar:");
+        System.out.println("1 -- Área");
         System.out.println("2 -- Perimetro");
         System.out.println("3 -- Ambas");
         
@@ -201,7 +353,7 @@ public class Menu {
             //Salto de linea
             System.out.println("\n");
             //Le decimos al usuairo que ocurrio un problema al dijitar el numero (por numero no valido)
-            System.out.println("Introduzca un dijito valido!");
+            System.out.println("Introduzca un dijito válido!");
             //Volvemos a ejecutar la funcion y devolvemos el valor obtenido de esta
             return menuMO();
         }
@@ -232,7 +384,7 @@ public class Menu {
                 menuSalir();
             default -> {
                 //Le decimos al usuario que ingreso un dijito incorrecto
-                System.out.println("Ingrese un dijito VALIDO");
+                System.out.println("Ingrese un dijito VÁLIDO");
                 //Si selecciona una opcion incorrecta, volvemos a ejecutar esta funcion
                 menuPS();
             }
